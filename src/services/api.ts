@@ -1,6 +1,6 @@
 // src/services/api.ts
 import axios from 'axios'
-import { supabase } from '../lib/supabase' // Assumindo que você tem este arquivo
+import { supabase } from './lib/supabase' // Fixed import path
 import type { Ticket, Department, Customer } from '../types'
 
 // 1. Configura o client Axios para apontar à sua Edge Function
