@@ -27,39 +27,41 @@ export function TicketsTable() {
     fetchData();
   }, []);
 
-  if (loading) return <div>Carregando chamados…</div>;
-  if (error) return <div style={{ color: 'red' }}>Erro: {error}</div>;
+  if (loading) return <div className="text-gray-600">Carregando chamados...</div>;
+  if (error) return <div className="text-red-600">Erro: {error}</div>;
 
   return (
-    <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-      <thead>
-        <tr>
-          <th>Protocolo</th>
-          <th>Assunto</th>
-          <th>Departamento</th>
-          <th>Situação</th>
-          <th>Data de Criação</th>
-          <th>Prioridade</th>
-        </tr>
-      </thead>
-      <tbody>
-        {tickets.map((t) => (
-          <tr key={t.id}>
-            <td style={{ border: '1px solid #ddd', padding: '8px' }}>{t.protocol}</td>
-            <td style={{ border: '1px solid #ddd', padding: '8px' }}>{t.subject}</td>
-            <td style={{ border: '1px solid #ddd', padding: '8px' }}>
-              {t.department?.name ?? '—'}
-            </td>
-            <td style={{ border: '1px solid #ddd', padding: '8px' }}>
-              {t.situation?.description ?? '—'}
-            </td>
-            <td style={{ border: '1px solid #ddd', padding: '8px' }}>
-              {new Date(t.creation_date).toLocaleString()}
-            </td>
-            <td style={{ border: '1px solid #ddd', padding: '8px' }}>{t.priority}</td>
+    <div className="overflow-x-auto">
+      <table className="min-w-full divide-y divide-gray-200">
+        <thead className="bg-gray-50">
+          <tr>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Protocolo</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Assunto</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Departamento</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Situação</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data de Criação</th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Prioridade</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody className="bg-white divide-y divide-gray-200">
+          {tickets.map((t) => (
+            <tr key={t.id} className="hover:bg-gray-50">
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{t.protocol}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{t.subject}</td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                {t.department?.name ?? '—'}
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                {t.situation?.description ?? '—'}
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                {new Date(t.creation_date).toLocaleString()}
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{t.priority}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }

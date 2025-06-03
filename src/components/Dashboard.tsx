@@ -4,16 +4,16 @@ import { TicketHeatmap } from './TicketHeatmap';
 
 export function Dashboard() {
   return (
-    <div style={{ padding: '1rem' }}>
-      <h1>Dashboard de Chamados TomTicket</h1>
+    <div className="min-h-screen bg-gray-100 p-8">
+      <h1 className="text-3xl font-bold mb-8 text-gray-800">Dashboard de Chamados TomTicket</h1>
 
-      <section style={{ marginBottom: '2rem' }}>
-        <h2>Visão Geral (Últimos 30 dias)</h2>
+      <section className="mb-8 bg-white rounded-lg shadow p-6">
+        <h2 className="text-xl font-semibold mb-4 text-gray-700">Visão Geral (Últimos 30 dias)</h2>
         <TicketsTable />
       </section>
 
-      <section style={{ marginBottom: '2rem' }}>
-        <h2>Heatmap de Chamados (Últimos 7 dias)</h2>
+      <section className="mb-8 bg-white rounded-lg shadow p-6">
+        <h2 className="text-xl font-semibold mb-4 text-gray-700">Heatmap de Chamados (Últimos 7 dias)</h2>
         <TicketHeatmap />
       </section>
     </div>
